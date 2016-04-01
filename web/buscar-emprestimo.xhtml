@@ -21,11 +21,14 @@
             <label class="error"><h:message for="numeroPessoa" /></label>
             <br /><br />
 
+            <h:outputLabel value="Número do Item:" />
+            <h:inputText value="#{emprestimo.numeroItem}" id="numeroItem" />
+            <label class="error"><h:message for="numeroItem" /></label>
+            <br /><br />
+
             <h:commandButton value="Buscar" action="#{emprestimo.buscar}"/>
 
         </h:form>
-
-        <p>O dado enviado foi: #{emprestimo.numeroPessoa}</p>
 
     </h:body>
 

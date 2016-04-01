@@ -14,7 +14,7 @@ public class Pessoa {
     }
 
     public String buscar() {
-        return "buscar-pessoa";
+        return "pessoa";
     }
 
     // GETTERS AND SETTERS //

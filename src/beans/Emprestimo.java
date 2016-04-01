@@ -12,7 +12,7 @@ public class Emprestimo {
     private String numeroItem;
 
     public Emprestimo() {
-        dataRetirada = String.valueOf(new Date());
+        this.setDataRetirada(String.valueOf(new Date()));
     }
 
     public String cadastrar() {
@@ -20,7 +20,12 @@ public class Emprestimo {
     }
 
     public String buscar() {
-        return "buscar-emprestimo";
+        return "emprestimo";
+    }
+
+    public String devolver() {
+        this.setDataDevolucao(String.valueOf(new Date()));
+        return "emprestimo";
     }
 
     // GETTERS AND SETTERS //

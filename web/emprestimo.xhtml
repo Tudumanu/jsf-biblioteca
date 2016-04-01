@@ -38,9 +38,11 @@
 
             <h:commandButton value="Cadastrar" action="#{emprestimo.cadastrar}" />
 
+            <h:commandButton value="Marcar Empréstimo como devolvido" action="#{emprestimo.devolver}" />
+
         </h:form>
 
-        <p>Os dados enviados foram: #{emprestimo.numeroPessoa} #{emprestimo.numeroItem} #{emprestimo.tipo} #{emprestimo.dataRetirada}</p>
+        <p>Os dados enviados foram: #{emprestimo.numeroPessoa} #{emprestimo.numeroItem} #{emprestimo.tipo} #{emprestimo.dataRetirada} #{emprestimo.dataDevolucao}</p>
 
     </h:body>
 

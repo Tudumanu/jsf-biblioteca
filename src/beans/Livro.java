@@ -15,7 +15,8 @@ public class Livro {
     }
 
     public String buscar() {
-        return "buscar-itens";
+        //TODO: verificar se encontra livro ou periódico para redirecionar a tela correta
+        return "livro";
     }
 
 
