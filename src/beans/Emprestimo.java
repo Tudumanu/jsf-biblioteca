@@ -9,7 +9,7 @@ public class Emprestimo {
     private String dataDevolucao;
     private Pessoa pessoa;
     private String tipo; //Livro ou Periodico
-    private int numeroItem;
+    private String numeroItem;
 
 
     // GETTERS AND SETTERS //
@@ -30,11 +30,11 @@ public class Emprestimo {
         this.tipo = tipo;
     }
 
-    public int getNumeroItem() {
+    public String getNumeroItem() {
         return numeroItem;
     }
 
-    public void setNumeroItem(int numeroItem) {
+    public void setNumeroItem(String numeroItem) {
         this.numeroItem = numeroItem;
     }
 

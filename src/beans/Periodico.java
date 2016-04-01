@@ -6,11 +6,14 @@ import javax.faces.bean.ManagedBean;
 public class Periodico {
     private String titulo;
     private String publicacao;
-    private int ano;
-    private int mes;
-    private String periodicidade; //diária, semanal, quinzenal, mensal, bimestral, trimestral, quadrimestral, semestral, anual ou irregular
+    private String ano;
+    private String mes;
+    private String periodicidade; //mensal, bimestral, trimestral, quadrimestral, semestral, anual ou irregular
     private String issn; //pode ser nulo no caso de ser irregular
 
+    public String cadastrar() {
+        return "periodico";
+    }
 
     // GETTERS AND SETTERS //
 
@@ -30,19 +33,19 @@ public class Periodico {
         this.publicacao = publicacao;
     }
 
-    public int getAno() {
+    public String getAno() {
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(String ano) {
         this.ano = ano;
     }
 
-    public int getMes() {
+    public String getMes() {
         return mes;
     }
 
-    public void setMes(int mes) {
+    public void setMes(String mes) {
         this.mes = mes;
     }
 

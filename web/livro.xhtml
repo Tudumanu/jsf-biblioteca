@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title><h:outputText value="#{indexBean.title}" /></title>
+    </h:head>
+
+    <h:body>
+        <h:outputLink value="index.jsf">Voltar ao Início</h:outputLink>
+
+        <h1>Livro</h1>
+
+        <h:form>
+            <h:outputLabel value="Título:" />
+            <h:inputText value="#{livro.titulo}" required="true" id="titulo" />
+            <label class="error"><h:message for="titulo" /></label>
+            <br /><br />
+
+            <h:outputLabel value="Editora:" />
+            <h:inputText value="#{livro.editora}" required="true" id="editora" />
+            <label class="error"><h:message for="editora" /></label>
+            <br /><br />
+
+            <h:outputLabel value="Autor Principal:" />
+            <h:inputText value="#{livro.autorPrincipal}" required="true" id="autor" />
+            <label class="error"><h:message for="autor" /></label>
+            <br /><br />
+
+
+            <h:outputLabel value="Ano (4 dígitos):" />
+            <h:inputText value="#{livro.ano}" id="ano" required="true">
+                <f:validateRegex pattern="[0-9]{4}" />
+            </h:inputText>
+            <label class="error"><h:message for="ano" /></label>
+            <br /><br />
+
+            <h:outputLabel value="ISBN (10 ou 13 dígitos):" />
+            <h:inputText value="#{livro.isbn}" id="isbn">
+                <f:validateRegex pattern="([0-9]{13}|[0-9]{10})" />
+            </h:inputText>
+            <label class="error"><h:message for="isbn" /></label>
+            <br /><br />
+
+            <h:commandButton value="Cadastrar" action="#{livro.cadastrar}"/>
+
+        </h:form>
+
+        <p>Os dados enviados foram: #{livro.titulo} #{livro.editora} #{livro.autorPrincipal} #{livro.ano} #{livro.isbn}</p>
+
+    </h:body>
+
+</f:view>
+</html>

@@ -7,11 +7,11 @@ public class Livro {
     private String titulo;
     private String editora;
     private String autorPrincipal;
-    private int ano;
+    private String ano;
     private String isbn;
 
-    public String choosePage() {
-        return "um";
+    public String cadastrar() {
+        return "livro";
     }
 
 
@@ -41,11 +41,11 @@ public class Livro {
         this.autorPrincipal = autorPrincipal;
     }
 
-    public int getAno() {
+    public String getAno() {
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(String ano) {
         this.ano = ano;
     }
 
