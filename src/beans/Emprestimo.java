@@ -19,6 +19,10 @@ public class Emprestimo {
         return "emprestimo";
     }
 
+    public String buscar() {
+        return "buscar-emprestimo";
+    }
+
     // GETTERS AND SETTERS //
 
     public String getNumeroPessoa() {
