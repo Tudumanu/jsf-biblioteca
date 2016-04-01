@@ -13,6 +13,10 @@ public class Pessoa {
         return "pessoa";
     }
 
+    public String buscar() {
+        return "buscar-pessoa";
+    }
+
     // GETTERS AND SETTERS //
 
     public String getNome() {

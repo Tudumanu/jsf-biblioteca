@@ -7,19 +7,26 @@ import java.util.Date;
 public class Emprestimo {
     private String dataRetirada;
     private String dataDevolucao;
-    private Pessoa pessoa;
+    private String numeroPessoa;
     private String tipo; //Livro ou Periodico
     private String numeroItem;
 
+    public Emprestimo() {
+        dataRetirada = String.valueOf(new Date());
+    }
+
+    public String cadastrar() {
+        return "emprestimo";
+    }
 
     // GETTERS AND SETTERS //
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public String getNumeroPessoa() {
+        return numeroPessoa;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setNumeroPessoa(String numeroPessoa) {
+        this.numeroPessoa = numeroPessoa;
     }
 
     public String getTipo() {
@@ -53,4 +60,5 @@ public class Emprestimo {
     public void setDataDevolucao(String dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
+
 }

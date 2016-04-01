@@ -14,6 +14,10 @@ public class Livro {
         return "livro";
     }
 
+    public String buscar() {
+        return "buscar-itens";
+    }
+
 
     // GETTERS AND SETTERS //
 
