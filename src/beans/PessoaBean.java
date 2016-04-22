@@ -1,9 +1,15 @@
 package beans;
 
+import beans.dao.PessoaDAO;
+
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
-public class Pessoa {
+public class PessoaBean {
+    private model.Pessoa pessoa;
+    private PessoaDAO
+
+
     private String nome;
     private String dataNascimento;
     private String tipo; //aluno, funcionario, professor

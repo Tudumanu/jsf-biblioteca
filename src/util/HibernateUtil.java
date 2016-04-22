@@ -26,15 +26,9 @@ public class HibernateUtil {
      * @return The factory.
      */
     private static SessionFactory buildSessionFactory() {
+        System.out.println("\n Iniciando sessionFactory do Hibernate... \n");
         try {
-            Configuration configuration = new Configuration().configure();
-
-            StandardServiceRegistryBuilder registry = new StandardServiceRegistryBuilder();
-            registry.applySettings(configuration.getProperties());
-
-            ServiceRegistry serviceRegistry = registry.build();
-
-            return configuration.buildSessionFactory(serviceRegistry);
+            return new Configuration().configure().buildSessionFactory();
 
         } catch (Throwable ex) {
 
@@ -45,6 +39,8 @@ public class HibernateUtil {
 
     /** @return The session factory. */
     public static SessionFactory getSessionFactory() {
+        System.out.println("\n ...fim criacao sessionFactory do Hibernate \n");
+
         return sessionFactory;
     }
 
