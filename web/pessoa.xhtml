@@ -17,17 +17,17 @@
 
         <h:form>
             <h:outputLabel value="Nome:" />
-            <h:inputText value="#{pessoa.nome}" required="true" id="nome" />
+            <h:inputText value="#{pessoaBean.dados.nome}" required="true" id="nome" />
             <label class="error"><h:message for="nome" /></label>
             <br /><br />
 
             <h:outputLabel value="Nascimento:" />
-            <h:inputText value="#{pessoa.dataNascimento}" id="dataNascimento" />
+            <h:inputText value="#{pessoaBean.dados.dataNascimento}" id="dataNascimento" />
             <label class="error"><h:message for="dataNascimento" /></label>
             <br /><br />
 
             <h:outputLabel value="Tipo:" />
-            <h:selectOneRadio id="tipo" value="#{pessoa.tipo}" required="true">
+            <h:selectOneRadio id="tipo" value="#{pessoaBean.dados.tipo}" required="true">
                 <f:selectItem itemLabel="Aluno" itemValue="aluno" />
                 <f:selectItem itemLabel="Funcionário" itemValue="funcionario" />
                 <f:selectItem itemLabel="Professor" itemValue="professor" />
@@ -35,11 +35,11 @@
             <label class="error"><h:message for="tipo" /></label>
             <br /><br />
 
-            <h:commandButton value="Cadastrar" action="#{pessoa.cadastrar}"/>
+            <h:commandButton value="Cadastrar" action="#{pessoaBean.cadastrar}"/>
 
         </h:form>
 
-        <p>Os dados enviados foram: #{pessoa.nome} #{pessoa.dataNascimento} #{pessoa.tipo}</p>
+        <p>Os dados enviados foram: #{pessoaBean.dados.id} #{pessoaBean.dados.nome} #{pessoaBean.dados.dataNascimento} #{pessoaBean.dados.tipo}</p>
 
     </h:body>
 

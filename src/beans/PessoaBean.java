@@ -1,22 +1,22 @@
 package beans;
 
 import beans.dao.PessoaDAO;
+import model.Pessoa;
 
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class PessoaBean {
-    private model.Pessoa pessoa;
-    private PessoaDAO
+    private Pessoa dados;
+    private PessoaDAO dao;
 
-
-    private String nome;
-    private String dataNascimento;
-    private String tipo; //aluno, funcionario, professor
-
+    public PessoaBean() {
+        dados = new Pessoa();
+        dao = new PessoaDAO();
+    }
 
     public String cadastrar() {
-        return "pessoa";
+        return dao.insert(dados) ? "pessoa" : "erro";
     }
 
     public String buscar() {
@@ -25,28 +25,11 @@ public class PessoaBean {
 
     // GETTERS AND SETTERS //
 
-    public String getNome() {
-        return nome;
+    public Pessoa getDados() {
+        return dados;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setDados(Pessoa dados) {
+        this.dados = dados;
     }
 }
