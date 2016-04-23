@@ -1,6 +1,6 @@
 package beans.dao;
 
-import model.Livro;
+import model.Periodico;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -8,12 +8,12 @@ import util.HibernateUtil;
 
 import java.util.List;
 
-public class LivroDAO {
+public class PeriodicoDAO {
     private Session session;
-    
-    public LivroDAO() {}
 
-    public boolean insert(Livro p) {
+    public PeriodicoDAO() {}
+
+    public boolean insert(Periodico p) {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(p);
@@ -23,7 +23,7 @@ public class LivroDAO {
         return true;
     }
 
-    public boolean delete(Livro p) {
+    public boolean delete(Periodico p) {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(p);
@@ -33,7 +33,7 @@ public class LivroDAO {
         return true;
     }
 
-    public boolean update(Livro p) {
+    public boolean update(Periodico p) {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(p);
@@ -43,23 +43,23 @@ public class LivroDAO {
         return true;
     }
 
-    public Livro show(int id) {
+    public Periodico show(int id) {
         session = HibernateUtil.getSessionFactory().openSession();
-        Livro livro = (Livro) session.get(Livro.class, new Integer(id));
+        Periodico periodico = (Periodico) session.get(Periodico.class, new Integer(id));
         session.close();
 
-        return livro;
+        return periodico;
     }
 
-    public List<Livro> search(String text) {
+    public List<Periodico> search(String text) {
         session = HibernateUtil.getSessionFactory().openSession();
-        List<Livro> list = (List<Livro>) session.createCriteria(Livro.class)
-                                .add(
-                                    Restrictions.or(
-                                        Restrictions.ilike("titulo", "%" + text + "%"),
-                                        Restrictions.ilike("autorPrincipal", "%" + text + "%")
-                                    )
-                                ).addOrder(Order.asc("id")).list();
+        List<Periodico> list = (List<Periodico>) session.createCriteria(Periodico.class)
+                .add(
+                        Restrictions.or(
+                                Restrictions.ilike("titulo", "%" + text + "%"),
+                                Restrictions.ilike("publicacao", "%" + text + "%")
+                        )
+                ).addOrder(Order.asc("id")).list();
         session.close();
 
         return list;

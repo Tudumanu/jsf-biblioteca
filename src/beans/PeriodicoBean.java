@@ -1,67 +1,50 @@
 package beans;
 
+import beans.dao.PeriodicoDAO;
+import model.Periodico;
+
 import javax.faces.bean.ManagedBean;
+import javax.faces.model.DataModel;
 
 @ManagedBean
 public class PeriodicoBean {
-    private String titulo;
-    private String publicacao;
-    private String ano;
-    private String mes;
-    private String periodicidade; //mensal, bimestral, trimestral, quadrimestral, semestral, anual ou irregular
-    private String issn; //pode ser nulo no caso de ser irregular
+    private Periodico dados;
+    private PeriodicoDAO dao;
+
+    private String cadastrarMessage;
+
+    public PeriodicoBean() {
+        dados = new Periodico();
+        dao = new PeriodicoDAO();
+    }
 
     public String cadastrar() {
-        return "periodico";
+        System.out.println("CADASTRAR");
+        if (dados.getId() <= 0) {
+            cadastrarMessage = "Periodico Cadastrada com SUCESSO, ID:";
+            return dao.insert(dados) ? "periodico" : "erro";
+        } else {
+            cadastrarMessage = "Periodico Atualizada com SUCESSO, ID:";
+            return dao.update(dados) ? "periodico" : "erro";
+        }
+    }
+
+    public String excluir() {
+        System.out.println("EXCLUIR");
+        return dao.delete(dados) ? "excluido" : "erro";
     }
 
     // GETTERS AND SETTERS //
 
-    public String getTitulo() {
-        return titulo;
+    public Periodico getDados() {
+        return dados;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setDados(Periodico dados) {
+        this.dados = dados;
     }
 
-    public String getPublicacao() {
-        return publicacao;
-    }
-
-    public void setPublicacao(String publicacao) {
-        this.publicacao = publicacao;
-    }
-
-    public String getAno() {
-        return ano;
-    }
-
-    public void setAno(String ano) {
-        this.ano = ano;
-    }
-
-    public String getMes() {
-        return mes;
-    }
-
-    public void setMes(String mes) {
-        this.mes = mes;
-    }
-
-    public String getPeriodicidade() {
-        return periodicidade;
-    }
-
-    public void setPeriodicidade(String periodicidade) {
-        this.periodicidade = periodicidade;
-    }
-
-    public String getIssn() {
-        return issn;
-    }
-
-    public void setIssn(String issn) {
-        this.issn = issn;
+    public String getCadastrarMessage() {
+        return cadastrarMessage;
     }
 }
