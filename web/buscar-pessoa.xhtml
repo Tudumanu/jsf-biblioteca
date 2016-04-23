@@ -17,13 +17,41 @@
 
         <h:form>
             <h:outputLabel value="Nome:" />
-            <h:inputText value="#{pessoaBean.nome}" required="true" id="nome" />
-            <label class="error"><h:message for="nome" /></label>
+            <h:inputText value="#{pessoaBean.stringBusca}" required="true" id="busca" />
+            <label class="error"><h:message for="busca" /></label>
             <br /><br />
 
             <h:commandButton value="Buscar" action="#{pessoaBean.buscar}"/>
-
         </h:form>
+
+        <p>#{pessoaBean.buscarMessage}</p>
+
+        <h:dataTable rendered="#{not empty pessoaBean.listaObj}" id="TabFuncionarios" value="#{pessoaBean.listaObj}" var="lista">
+            <h:column>
+                <f:facet name="header">
+                    ID
+                </f:facet>
+                <h:outputText value="#{lista.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    NOME
+                </f:facet>
+                <h:outputText value="#{lista.nome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    DATA NASCIMENTO
+                </f:facet>
+                <h:outputText value="#{lista.dataNascimento}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    TIPO
+                </f:facet>
+                <h:outputText value="#{lista.tipo}"/>
+            </h:column>
+        </h:dataTable>
 
     </h:body>
 

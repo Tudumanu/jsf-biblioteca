@@ -1,9 +1,7 @@
 package util;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
 /**
  * Util class to get a sessionFactory on Hibernate 5
@@ -28,7 +26,9 @@ public class HibernateUtil {
     private static SessionFactory buildSessionFactory() {
         System.out.println("\n Iniciando sessionFactory do Hibernate... \n");
         try {
-            return new Configuration().configure().buildSessionFactory();
+            SessionFactory sf =  new Configuration().configure().buildSessionFactory();
+            System.out.println("\n ...fim criacao sessionFactory do Hibernate \n");
+            return sf;
 
         } catch (Throwable ex) {
 
@@ -39,8 +39,6 @@ public class HibernateUtil {
 
     /** @return The session factory. */
     public static SessionFactory getSessionFactory() {
-        System.out.println("\n ...fim criacao sessionFactory do Hibernate \n");
-
         return sessionFactory;
     }
 
