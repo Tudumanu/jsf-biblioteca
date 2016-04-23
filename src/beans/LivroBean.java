@@ -3,7 +3,7 @@ package beans;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
-public class Livro {
+public class LivroBean {
     private String titulo;
     private String editora;
     private String autorPrincipal;

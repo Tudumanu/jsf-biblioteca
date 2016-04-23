@@ -17,40 +17,40 @@
 
         <h:form>
             <h:outputLabel value="Título:" />
-            <h:inputText value="#{livro.titulo}" required="true" id="titulo" />
+            <h:inputText value="#{livroBean.titulo}" required="true" id="titulo" />
             <label class="error"><h:message for="titulo" /></label>
             <br /><br />
 
             <h:outputLabel value="Editora:" />
-            <h:inputText value="#{livro.editora}" required="true" id="editora" />
+            <h:inputText value="#{livroBean.editora}" required="true" id="editora" />
             <label class="error"><h:message for="editora" /></label>
             <br /><br />
 
             <h:outputLabel value="Autor Principal:" />
-            <h:inputText value="#{livro.autorPrincipal}" required="true" id="autor" />
+            <h:inputText value="#{livroBean.autorPrincipal}" required="true" id="autor" />
             <label class="error"><h:message for="autor" /></label>
             <br /><br />
 
 
             <h:outputLabel value="Ano (4 dígitos):" />
-            <h:inputText value="#{livro.ano}" id="ano" required="true">
+            <h:inputText value="#{livroBean.ano}" id="ano" required="true">
                 <f:validateRegex pattern="[0-9]{4}" />
             </h:inputText>
             <label class="error"><h:message for="ano" /></label>
             <br /><br />
 
             <h:outputLabel value="ISBN (10 ou 13 dígitos):" />
-            <h:inputText value="#{livro.isbn}" id="isbn">
+            <h:inputText value="#{livroBean.isbn}" id="isbn">
                 <f:validateRegex pattern="([0-9]{13}|[0-9]{10})" />
             </h:inputText>
             <label class="error"><h:message for="isbn" /></label>
             <br /><br />
 
-            <h:commandButton value="Cadastrar" action="#{livro.cadastrar}"/>
+            <h:commandButton value="Cadastrar" action="#{livroBean.cadastrar}"/>
 
         </h:form>
 
-        <p>Os dados enviados foram: #{livro.titulo} #{livro.editora} #{livro.autorPrincipal} #{livro.ano} #{livro.isbn}</p>
+        <p>Os dados enviados foram: #{livroBean.titulo} #{livroBean.editora} #{livroBean.autorPrincipal} #{livroBean.ano} #{livroBean.isbn}</p>
 
     </h:body>
 

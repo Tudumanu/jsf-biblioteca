@@ -1,21 +1,44 @@
-package beans;
+package model;
 
-import javax.faces.bean.ManagedBean;
+import javax.persistence.*;
+import java.io.Serializable;
 
-@ManagedBean
-public class Periodico {
+@Entity
+@Table(name = "periodico")
+public class Periodico implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @Column(name = "titulo")
     private String titulo;
+
+    @Column(name = "publicacao")
     private String publicacao;
+
+    @Column(name = "ano")
     private String ano;
+
+    @Column(name = "mes")
     private String mes;
+
+    @Column(name = "periodicidade")
     private String periodicidade; //mensal, bimestral, trimestral, quadrimestral, semestral, anual ou irregular
+
+    @Column(name = "issn")
     private String issn; //pode ser nulo no caso de ser irregular
 
-    public String cadastrar() {
-        return "periodico";
-    }
+    public Periodico(){}
 
     // GETTERS AND SETTERS //
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitulo() {
         return titulo;

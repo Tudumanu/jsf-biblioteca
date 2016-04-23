@@ -17,24 +17,24 @@
 
         <h:form>
             <h:outputLabel value="Título:" />
-            <h:inputText value="#{periodico.titulo}" required="true" id="titulo" />
+            <h:inputText value="#{periodicoBean.titulo}" required="true" id="titulo" />
             <label class="error"><h:message for="titulo" /></label>
             <br /><br />
 
             <h:outputLabel value="Publicação:" />
-            <h:inputText value="#{periodico.publicacao}" required="true" id="publicacao" />
+            <h:inputText value="#{periodicoBean.publicacao}" required="true" id="publicacao" />
             <label class="error"><h:message for="publicacao" /></label>
             <br /><br />
 
             <h:outputLabel value="Ano (4 dígitos):" />
-            <h:inputText value="#{periodico.ano}" id="ano" required="true">
+            <h:inputText value="#{periodicoBean.ano}" id="ano" required="true">
                 <f:validateRegex pattern="[0-9]{4}" />
             </h:inputText>
             <label class="error"><h:message for="ano" /></label>
             <br /><br />
 
             <h:outputLabel value="Mês (2 dígitos):" />
-            <h:inputText value="#{periodico.mes}" id="mes" required="true">
+            <h:inputText value="#{periodicoBean.mes}" id="mes" required="true">
                 <f:validateRegex pattern="[0-9]{2}" />
                 <f:validateLongRange maximum="12" minimum="1" />
             </h:inputText>
@@ -42,7 +42,7 @@
             <br /><br />
 
             <h:outputLabel value="Periodicidade:" />
-            <h:selectOneMenu id="periodicidade" value="#{periodico.periodicidade}" required="true">
+            <h:selectOneMenu id="periodicidade" value="#{periodicoBean.periodicidade}" required="true">
                 <f:selectItem itemLabel="Irregular" itemValue="irregular" />
                 <f:selectItem itemLabel="Mensal" itemValue="mensal" />
                 <f:selectItem itemLabel="Bimestral" itemValue="bimestral" />
@@ -55,17 +55,17 @@
             <br /><br />
 
             <h:outputLabel value="ISSN (8 dígitos):" />
-            <h:inputText value="#{periodico.issn}" id="issn">
+            <h:inputText value="#{periodicoBean.issn}" id="issn">
                 <f:validateRegex pattern="([0-9]{8})" />
             </h:inputText>
             <label class="error"><h:message for="issn" /></label>
             <br /><br />
 
-            <h:commandButton value="Cadastrar" action="#{periodico.cadastrar}"/>
+            <h:commandButton value="Cadastrar" action="#{periodicoBean.cadastrar}"/>
 
         </h:form>
 
-        <p>Os dados enviados foram: #{periodico.titulo} #{periodico.publicacao} #{periodico.ano} #{periodico.mes} #{periodico.periodicidade} #{periodico.issn}</p>
+        <p>Os dados enviados foram: #{periodicoBean.titulo} #{periodicoBean.publicacao} #{periodicoBean.ano} #{periodicoBean.mes} #{periodicoBean.periodicidade} #{periodicoBean.issn}</p>
 
     </h:body>
 

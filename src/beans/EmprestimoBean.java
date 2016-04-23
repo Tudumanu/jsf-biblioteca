@@ -4,14 +4,14 @@ import javax.faces.bean.ManagedBean;
 import java.util.Date;
 
 @ManagedBean
-public class Emprestimo {
+public class EmprestimoBean {
     private String dataRetirada;
     private String dataDevolucao;
     private String numeroPessoa;
     private String tipo; //Livro ou Periodico
     private String numeroItem;
 
-    public Emprestimo() {
+    public EmprestimoBean() {
         this.setDataRetirada(String.valueOf(new Date()));
     }
 

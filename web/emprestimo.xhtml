@@ -17,32 +17,32 @@
 
         <h:form>
             <h:outputLabel value="Número da pessoa:" />
-            <h:inputText value="#{emprestimo.numeroPessoa}" required="true" id="numeroPessoa" />
+            <h:inputText value="#{emprestimoBean.numeroPessoa}" required="true" id="numeroPessoa" />
             <label class="error"><h:message for="numeroPessoa" /></label>
             <br /><br />
 
             <h:outputLabel value="Número do Item:" />
-            <h:inputText value="#{emprestimo.numeroItem}" required="true" id="numeroItem" />
+            <h:inputText value="#{emprestimoBean.numeroItem}" required="true" id="numeroItem" />
             <label class="error"><h:message for="numeroItem" /></label>
             <br /><br />
 
             <h:outputLabel value="Tipo:" />
-            <h:selectOneRadio value="#{emprestimo.tipo}" id="tipo" required="true">
+            <h:selectOneRadio value="#{emprestimoBean.tipo}" id="tipo" required="true">
                 <f:selectItem itemLabel="Livro" itemValue="livro" />
                 <f:selectItem itemLabel="Periódico" itemValue="periodico" />
             </h:selectOneRadio>
             <label class="error"><h:message for="tipo" /></label>
             <br /><br />
 
-            <h:inputHidden value="#{emprestimo.dataRetirada}" />
+            <h:inputHidden value="#{emprestimoBean.dataRetirada}" />
 
-            <h:commandButton value="Cadastrar" action="#{emprestimo.cadastrar}" />
+            <h:commandButton value="Cadastrar" action="#{emprestimoBean.cadastrar}" />
 
-            <h:commandButton value="Marcar Empréstimo como devolvido" action="#{emprestimo.devolver}" />
+            <h:commandButton value="Marcar Empréstimo como devolvido" action="#{emprestimoBean.devolver}" />
 
         </h:form>
 
-        <p>Os dados enviados foram: #{emprestimo.numeroPessoa} #{emprestimo.numeroItem} #{emprestimo.tipo} #{emprestimo.dataRetirada} #{emprestimo.dataDevolucao}</p>
+        <p>Os dados enviados foram: #{emprestimoBean.numeroPessoa} #{emprestimoBean.numeroItem} #{emprestimoBean.tipo} #{emprestimoBean.dataRetirada} #{emprestimoBean.dataDevolucao}</p>
 
     </h:body>
 

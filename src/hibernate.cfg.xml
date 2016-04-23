@@ -25,6 +25,8 @@
 
         <!-- My mapping classes -->
         <mapping class="model.Pessoa"/>
+        <mapping class="model.Periodico"/>
+        <mapping class="model.Livro"/>
 
 
         <!--<property name="transaction.factory_class">

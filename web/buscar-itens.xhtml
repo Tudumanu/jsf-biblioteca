@@ -17,11 +17,11 @@
 
         <h:form>
             <h:outputLabel value="Título:" />
-            <h:inputText value="#{livro.titulo}" required="true" id="titulo" />
+            <h:inputText value="#{livroBean.titulo}" required="true" id="titulo" />
             <label class="error"><h:message for="titulo" /></label>
             <br /><br />
 
-            <h:commandButton value="Buscar" action="#{livro.buscar}"/>
+            <h:commandButton value="Buscar" action="#{livroBean.buscar}"/>
 
         </h:form>
 
