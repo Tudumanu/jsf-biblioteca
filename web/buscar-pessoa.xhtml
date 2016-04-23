@@ -14,9 +14,11 @@
         <h:outputLink value="index.jsf">Voltar ao Início</h:outputLink>
 
         <h1>Buscar Pessoa</h1>
+        <h4>Digite o ID da pessoa para ir a tela de edição</h4>
+        <p>Use <strong>% para listar todos</strong></p>
 
         <h:form>
-            <h:outputLabel value="Nome:" />
+            <h:outputLabel value="Nome ou ID:" />
             <h:inputText value="#{pessoaBean.stringBusca}" required="true" id="busca" />
             <label class="error"><h:message for="busca" /></label>
             <br /><br />

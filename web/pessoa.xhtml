@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <h:head>
@@ -35,11 +36,17 @@
             <label class="error"><h:message for="tipo" /></label>
             <br /><br />
 
-            <h:commandButton value="Cadastrar" action="#{pessoaBean.cadastrar}"/>
+            <h:inputHidden value="#{pessoaBean.dados.id}" />
 
+            <h:commandButton value="#{pessoaBean.dados.id > 1 ? 'Atualizar' : 'Cadastrar'}" action="#{pessoaBean.cadastrar}" />
         </h:form>
 
-        <p>Os dados enviados foram: #{pessoaBean.dados.id} #{pessoaBean.dados.nome} #{pessoaBean.dados.dataNascimento} #{pessoaBean.dados.tipo}</p>
+        <h:form rendered="#{pessoaBean.dados.id > 0 ? true : false}">
+            <h:inputHidden value="#{pessoaBean.dados.id}" />
+            <h:commandButton value="Excluir" action="#{pessoaBean.excluir}" />
+        </h:form>
+
+        <p>#{pessoaBean.cadastrarMessage} <h:outputLabel rendered="#{not empty pessoaBean.cadastrarMessage}" value="#{pessoaBean.dados.id}"/></p>
 
     </h:body>
 

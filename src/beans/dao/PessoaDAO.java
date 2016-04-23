@@ -2,6 +2,7 @@ package beans.dao;
 
 import model.Pessoa;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import util.HibernateUtil;
 
@@ -54,7 +55,8 @@ public class PessoaDAO {
     public List<Pessoa> buscar(String text) {
         session = HibernateUtil.getSessionFactory().openSession();
         List<Pessoa> list = (List<Pessoa>) session.createCriteria(Pessoa.class)
-                            .add(Restrictions.like("nome", "%"+ text +"%")).list();
+                            .add(Restrictions.ilike("nome", "%"+ text +"%"))
+                            .addOrder(Order.asc("id")).list();
         session.close();
 
         return list;

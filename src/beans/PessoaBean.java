@@ -14,6 +14,7 @@ public class PessoaBean {
 
     private String stringBusca;
     private String buscarMessage;
+    private String cadastrarMessage;
     private DataModel listaObj;
 
     public PessoaBean() {
@@ -22,7 +23,14 @@ public class PessoaBean {
     }
 
     public String cadastrar() {
-        return dao.insert(dados) ? "pessoa" : "erro";
+        System.out.println("CADASTRAR");
+        if (dados.getId() <= 0) {
+            cadastrarMessage = "Pessoa Cadastrada com SUCESSO, ID:";
+            return dao.insert(dados) ? "pessoa" : "erro";
+        } else {
+            cadastrarMessage = "Pessoa Atualizada com SUCESSO, ID:";
+            return dao.update(dados) ? "pessoa" : "erro";
+        }
     }
 
     public String buscar() {
@@ -43,13 +51,13 @@ public class PessoaBean {
                 buscarMessage = "Nenhuma pessoa encontrada com nome: " + stringBusca;
         }
 
+        System.out.println("BUSCAR NULL");
         return null; //permanece na mesma pagina
     }
 
-    public String excluir(String objId) {
+    public String excluir() {
         System.out.println("EXCLUIR");
-        System.out.println(objId);
-        return null;
+        return dao.delete(dados) ? "excluido" : "erro";
     }
 
     /*public int getId() {
@@ -88,5 +96,9 @@ public class PessoaBean {
 
     public DataModel getlistaObj() {
         return listaObj;
+    }
+
+    public String getCadastrarMessage() {
+        return cadastrarMessage;
     }
 }
