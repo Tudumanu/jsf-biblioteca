@@ -14,16 +14,58 @@
         <h:outputLink value="index.jsf">Voltar ao Início</h:outputLink>
 
         <h1>Buscar Livro ou Periódico</h1>
+        <h4>Digite o ID do item para ir a tela de edição</h4>
+        <p>Use <strong>% para listar todos</strong></p>
 
         <h:form>
-            <h:outputLabel value="Título:" />
-            <h:inputText value="#{livroBean.titulo}" required="true" id="titulo" />
-            <label class="error"><h:message for="titulo" /></label>
+            <h:outputLabel value="Título, Autor ou ID:" />
+            <h:inputText value="#{livroBean.stringBusca}" required="true" id="busca" />
+            <label class="error"><h:message for="busca" /></label>
             <br /><br />
 
             <h:commandButton value="Buscar" action="#{livroBean.buscar}"/>
-
         </h:form>
+
+        <p>#{livroBean.buscarMessage}</p>
+
+        <h:dataTable rendered="#{not empty livroBean.listaObj}" id="TabFuncionarios" value="#{livroBean.listaObj}" var="lista">
+            <h:column>
+                <f:facet name="header">
+                    ID
+                </f:facet>
+                <h:outputText value="#{lista.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    TITULO
+                </f:facet>
+                <h:outputText value="#{lista.titulo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    EDITORA
+                </f:facet>
+                <h:outputText value="#{lista.editora}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    AUTOR PRINCIPAL
+                </f:facet>
+                <h:outputText value="#{lista.autorPrincipal}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    ANO
+                </f:facet>
+                <h:outputText value="#{lista.ano}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    ISBN
+                </f:facet>
+                <h:outputText value="#{lista.isbn}"/>
+            </h:column>
+        </h:dataTable>
 
     </h:body>
 
