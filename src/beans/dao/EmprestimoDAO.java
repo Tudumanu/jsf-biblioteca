@@ -53,14 +53,34 @@ public class EmprestimoDAO {
 
     public List<Emprestimo> search(String tipo, int numeroPessoa, int numeroItem) {
         session = HibernateUtil.getSessionFactory().openSession();
-        List<Emprestimo> list = (List<Emprestimo>) session.createCriteria(Emprestimo.class)
-                .add(
-                        Restrictions.or(
-                                Restrictions.eq("numeroPessoa", numeroPessoa),
-                                Restrictions.eq("numeroItem", numeroItem),
-                                Restrictions.ilike("tipo", tipo)
-                        )
-                ).addOrder(Order.asc("id")).list();
+
+        List<Emprestimo> list = null;
+
+        if (numeroPessoa != 0 && numeroItem != 0)
+            list = (List<Emprestimo>) session.createCriteria(Emprestimo.class)
+                    .add(Restrictions.eq("numeroPessoa", numeroPessoa))
+                    .add(Restrictions.eq("numeroItem", numeroItem))
+                    .add(Restrictions.ilike("tipo", tipo))
+                    .addOrder(Order.asc("id")).list();
+        else {
+            if (numeroPessoa != 0)
+                list = (List<Emprestimo>) session.createCriteria(Emprestimo.class)
+                        .add(Restrictions.eq("numeroPessoa", numeroPessoa))
+                        .add(Restrictions.ilike("tipo", tipo))
+                        .addOrder(Order.asc("id")).list();
+            else {
+                if (numeroItem != 0)
+                    list = (List<Emprestimo>) session.createCriteria(Emprestimo.class)
+                            .add(Restrictions.eq("numeroItem", numeroItem))
+                            .add(Restrictions.ilike("tipo", tipo))
+                            .addOrder(Order.asc("id")).list();
+                else
+                    list = (List<Emprestimo>) session.createCriteria(Emprestimo.class)
+                            .add(Restrictions.ilike("tipo", tipo))
+                            .addOrder(Order.asc("id")).list();
+            }
+        }
+
         session.close();
 
         return list;

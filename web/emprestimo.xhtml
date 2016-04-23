@@ -34,13 +34,26 @@
             <label class="error"><h:message for="tipo" /></label>
             <br /><br />
 
+            <label>Retirada: <h:outputText value="#{emprestimoBean.dados.dataRetirada}" /></label>
+            <br /><br />
+
+            <label>Devolução: <h:outputText value="#{emprestimoBean.dados.dataDevolucao}" /></label>
+            <br /><br />
+
             <h:inputHidden value="#{emprestimoBean.dados.id}" />
+            <h:inputHidden value="#{emprestimoBean.dados.dataRetirada}" />
+            <h:inputHidden value="#{emprestimoBean.dados.dataDevolucao}" />
 
             <h:commandButton value="#{emprestimoBean.dados.id > 1 ? 'Atualizar' : 'Cadastrar'}" action="#{emprestimoBean.cadastrar}" />
         </h:form>
 
         <h:form rendered="#{emprestimoBean.dados.id > 0 ? true : false}">
             <h:inputHidden value="#{emprestimoBean.dados.id}" />
+            <h:inputHidden value="#{emprestimoBean.dados.numeroPessoa}" />
+            <h:inputHidden value="#{emprestimoBean.dados.numeroItem}" />
+            <h:inputHidden value="#{emprestimoBean.dados.tipo}" />
+            <h:inputHidden value="#{emprestimoBean.dados.dataRetirada}" />
+            <h:inputHidden value="#{emprestimoBean.dados.dataDevolucao}" />
             <h:commandButton value="Marcar Empréstimo como devolvido" action="#{emprestimoBean.devolver}" />
         </h:form>
 

@@ -14,9 +14,13 @@
         <h:outputLink value="index.jsf">Voltar ao Início</h:outputLink>
 
         <h1>Buscar Empréstimo</h1>
-        <p>Deixe campos em branco <strong>para listar todos do tipo</strong></p>
+        <p>Digite o número do empréstimo <strong>para editá-lo</strong></p>
 
         <h:form>
+            <h:outputLabel value="Número do Empréstimo:" />
+            <h:inputText value="#{emprestimoBean.numEmprestimo}" />
+            <br /><br />
+
             <h:outputLabel value="Número da Pessoa:" />
             <h:inputText value="#{emprestimoBean.numPessoaBusca}" />
             <br /><br />
@@ -34,7 +38,7 @@
             <h:commandButton value="Buscar" action="#{emprestimoBean.buscar}"/>
         </h:form>
 
-        <p>#{itemBean.buscarMessage}</p>
+        <p>#{emprestimoBean.buscarMessage}</p>
 
         <h:dataTable rendered="#{not empty emprestimoBean.listaObj}" value="#{emprestimoBean.listaObj}" var="lista">
             <h:column>

@@ -59,12 +59,12 @@ public class EmprestimoBean {
 
                 if (!numItemBusca.isEmpty())
                     numItem = Integer.parseInt(numItemBusca);
-            } catch (Exception e) {}
+            } catch (Exception ex) {}
             finally {
                 listaObj = new ListDataModel<>(dao.search(tipoBusca, numPessoa, numItem));
                 if (listaObj.getRowCount() < 1)
                     buscarMessage = "Nenhum emprestimo encontrado com tipo: " + tipoBusca
-                            +" com número Pessoa e número Item informados";
+                            +" com número Pessoa: "+ numPessoa +" e número Item: "+ numItem;
             }
         }
 
