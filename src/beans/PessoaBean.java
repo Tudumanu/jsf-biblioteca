@@ -23,7 +23,6 @@ public class PessoaBean {
     }
 
     public String cadastrar() {
-        System.out.println("CADASTRAR");
         if (dados.getId() <= 0) {
             cadastrarMessage = "Pessoa Cadastrada com SUCESSO, ID:";
             return dao.insert(dados) ? "pessoa" : "erro";
@@ -34,8 +33,6 @@ public class PessoaBean {
     }
 
     public String buscar() {
-        System.out.println("BUSCAR");
-        System.out.println(stringBusca);
         try {
             int n = Integer.parseInt(stringBusca);
             dados = dao.show(n);
@@ -51,26 +48,12 @@ public class PessoaBean {
                 buscarMessage = "Nenhuma pessoa encontrada com nome: " + stringBusca;
         }
 
-        System.out.println("BUSCAR NULL");
         return null; //permanece na mesma pagina
     }
 
     public String excluir() {
-        System.out.println("EXCLUIR");
         return dao.delete(dados) ? "excluido" : "erro";
     }
-
-    /*public int getId() {
-        ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-        HttpServletRequest req = (HttpServletRequest) context.getRequest();
-
-        Map a = req.getParameterMap();
-        System.out.println("\n "+ a.get("busca"));
-        System.out.println(a);
-
-        System.out.println("\n REQUEST: "+ req.getParameter("id") +","+ req.getParameter("busca") +" \n");
-        return 1;//Integer.parseInt(req.getParameter("id"));
-    }*/
 
     // GETTERS AND SETTERS //
 

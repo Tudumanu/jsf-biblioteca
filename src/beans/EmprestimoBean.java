@@ -27,7 +27,6 @@ public class EmprestimoBean {
     }
 
     public String cadastrar() {
-        System.out.println("CADASTRAR");
         if (dados.getId() <= 0) {
             cadastrarMessage = "Emprestimo Cadastrado com SUCESSO, ID:";
             dados.setDataRetirada(String.valueOf(new Date()));
@@ -39,7 +38,6 @@ public class EmprestimoBean {
     }
 
     public String buscar() {
-        System.out.println("BUSCAR");
         try {
             int n = Integer.parseInt(numEmprestimo);
             dados = dao.show(n);
@@ -68,12 +66,10 @@ public class EmprestimoBean {
             }
         }
 
-        System.out.println("BUSCAR NULL");
         return null; //permanece na mesma pagina
     }
 
     public String devolver() {
-        System.out.println("DEVOLVER");
         dados.setDataDevolucao(String.valueOf(new Date()));
         cadastrarMessage = "Emprestimo Devolvido com SUCESSO, ID:";
         return dao.update(dados) ? "emprestimo" : "erro";

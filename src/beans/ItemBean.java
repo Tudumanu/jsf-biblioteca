@@ -30,7 +30,6 @@ public class ItemBean {
     }
 
     public String cadastrar() {
-        System.out.println("CADASTRAR");
         if (dados.getId() <= 0) {
             cadastrarMessage = "Livro Cadastrado com SUCESSO, ID:";
             return dao.insert(dados) ? "livro" : "erro";
@@ -41,7 +40,6 @@ public class ItemBean {
     }
 
     public String cadastrarPeriodico() {
-        System.out.println("CADASTRAR");
         if (periodicoDados.getId() <= 0) {
             cadastrarMessage = "Periodico Cadastrado com SUCESSO, ID:";
             return periodicoDao.insert(periodicoDados) ? "periodico" : "erro";
@@ -52,8 +50,6 @@ public class ItemBean {
     }
 
     public String buscar() {
-        System.out.println("BUSCAR");
-        System.out.println(stringBusca);
         try {
             int n = Integer.parseInt(stringBusca);
 
@@ -87,17 +83,14 @@ public class ItemBean {
             }
         }
 
-        System.out.println("BUSCAR NULL");
         return null; //permanece na mesma pagina
     }
 
     public String excluir() {
-        System.out.println("EXCLUIR");
         return dao.delete(dados) ? "excluido" : "erro";
     }
 
     public String excluirPeriodico() {
-        System.out.println("EXCLUIR");
         return periodicoDao.delete(periodicoDados) ? "excluido" : "erro";
     }
 
