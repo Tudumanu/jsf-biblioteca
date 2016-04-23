@@ -17,46 +17,46 @@
 
         <h:form>
             <h:outputLabel value="Título:" />
-            <h:inputText value="#{livroBean.dados.titulo}" required="true" id="titulo" />
+            <h:inputText value="#{itemBean.dados.titulo}" required="true" id="titulo" />
             <label class="error"><h:message for="titulo" /></label>
             <br /><br />
 
             <h:outputLabel value="Editora:" />
-            <h:inputText value="#{livroBean.dados.editora}" required="true" id="editora" />
+            <h:inputText value="#{itemBean.dados.editora}" required="true" id="editora" />
             <label class="error"><h:message for="editora" /></label>
             <br /><br />
 
             <h:outputLabel value="Autor Principal:" />
-            <h:inputText value="#{livroBean.dados.autorPrincipal}" required="true" id="autor" />
+            <h:inputText value="#{itemBean.dados.autorPrincipal}" required="true" id="autor" />
             <label class="error"><h:message for="autor" /></label>
             <br /><br />
 
 
             <h:outputLabel value="Ano (4 dígitos):" />
-            <h:inputText value="#{livroBean.dados.ano}" id="ano" required="true">
+            <h:inputText value="#{itemBean.dados.ano}" id="ano" required="true">
                 <f:validateRegex pattern="[0-9]{4}" />
             </h:inputText>
             <label class="error"><h:message for="ano" /></label>
             <br /><br />
 
             <h:outputLabel value="ISBN (10 ou 13 dígitos):" />
-            <h:inputText value="#{livroBean.dados.isbn}" id="isbn">
+            <h:inputText value="#{itemBean.dados.isbn}" id="isbn">
                 <f:validateRegex pattern="([0-9]{13}|[0-9]{10})" />
             </h:inputText>
             <label class="error"><h:message for="isbn" /></label>
             <br /><br />
 
-            <h:inputHidden value="#{livroBean.dados.id}" />
+            <h:inputHidden value="#{itemBean.dados.id}" />
 
-            <h:commandButton value="#{livroBean.dados.id > 1 ? 'Atualizar' : 'Cadastrar'}" action="#{livroBean.cadastrar}" />
+            <h:commandButton value="#{itemBean.dados.id > 1 ? 'Atualizar' : 'Cadastrar'}" action="#{itemBean.cadastrar}" />
         </h:form>
 
-        <h:form rendered="#{livroBean.dados.id > 0 ? true : false}">
-            <h:inputHidden value="#{livroBean.dados.id}" />
-            <h:commandButton value="Excluir" action="#{livroBean.excluir}" />
+        <h:form rendered="#{itemBean.dados.id > 0 ? true : false}">
+            <h:inputHidden value="#{itemBean.dados.id}" />
+            <h:commandButton value="Excluir" action="#{itemBean.excluir}" />
         </h:form>
 
-        <p>#{livroBean.cadastrarMessage} <h:outputLabel rendered="#{not empty livroBean.cadastrarMessage}" value="#{livroBean.dados.id}"/></p>
+        <p>#{itemBean.cadastrarMessage} <h:outputLabel rendered="#{not empty itemBean.cadastrarMessage}" value="#{itemBean.dados.id}"/></p>
 
     </h:body>
 

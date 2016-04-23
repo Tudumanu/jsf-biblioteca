@@ -18,17 +18,23 @@
         <p>Use <strong>% para listar todos</strong></p>
 
         <h:form>
-            <h:outputLabel value="Título, Autor ou ID:" />
-            <h:inputText value="#{livroBean.stringBusca}" required="true" id="busca" />
+            <h:outputLabel value="Título, Autor Principal, Publicação ou ID:" />
+            <h:inputText value="#{itemBean.stringBusca}" required="true" id="busca" />
             <label class="error"><h:message for="busca" /></label>
             <br /><br />
 
-            <h:commandButton value="Buscar" action="#{livroBean.buscar}"/>
+            <h:outputLabel value="Tipo:" />
+            <h:selectOneMenu id="tipo" value="#{itemBean.tipoBusca}" required="true">
+                <f:selectItem itemLabel="Livro" itemValue="livro" />
+                <f:selectItem itemLabel="Periodico" itemValue="periodico" />
+            </h:selectOneMenu>
+
+            <h:commandButton value="Buscar" action="#{itemBean.buscar}"/>
         </h:form>
 
-        <p>#{livroBean.buscarMessage}</p>
+        <p>#{itemBean.buscarMessage}</p>
 
-        <h:dataTable rendered="#{not empty livroBean.listaObj}" id="TabFuncionarios" value="#{livroBean.listaObj}" var="lista">
+        <h:dataTable rendered="#{not empty itemBean.listaObj and itemBean.tipoBusca eq 'livro'}" value="#{itemBean.listaObj}" var="lista">
             <h:column>
                 <f:facet name="header">
                     ID
@@ -64,6 +70,51 @@
                     ISBN
                 </f:facet>
                 <h:outputText value="#{lista.isbn}"/>
+            </h:column>
+        </h:dataTable>
+
+        <h:dataTable rendered="#{not empty itemBean.listaObj and itemBean.tipoBusca eq 'periodico'}" value="#{itemBean.listaObj}" var="lista">
+            <h:column>
+                <f:facet name="header">
+                    ID
+                </f:facet>
+                <h:outputText value="#{lista.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    TITULO
+                </f:facet>
+                <h:outputText value="#{lista.titulo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    PUBLICACAO
+                </f:facet>
+                <h:outputText value="#{lista.publicacao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    ANO
+                </f:facet>
+                <h:outputText value="#{lista.ano}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    MES
+                </f:facet>
+                <h:outputText value="#{lista.mes}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    PERIODICIDADE
+                </f:facet>
+                <h:outputText value="#{lista.periodicidade}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    ISSN
+                </f:facet>
+                <h:outputText value="#{lista.issn}"/>
             </h:column>
         </h:dataTable>
 
