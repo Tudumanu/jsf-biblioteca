@@ -27,6 +27,7 @@
         <mapping class="model.Pessoa"/>
         <mapping class="model.Periodico"/>
         <mapping class="model.Livro"/>
+        <mapping class="model.Emprestimo"/>
 
 
         <!--<property name="transaction.factory_class">
