@@ -46,7 +46,7 @@ public class PessoaBean {
                 buscarMessage = "Nenhuma pessoa encontrada com id: " + n;
 
         } catch (Exception e) {
-            listaObj = new ListDataModel<>(dao.buscar(stringBusca));
+            listaObj = new ListDataModel<>(dao.search(stringBusca));
             if (listaObj.getRowCount() < 1)
                 buscarMessage = "Nenhuma pessoa encontrada com nome: " + stringBusca;
         }

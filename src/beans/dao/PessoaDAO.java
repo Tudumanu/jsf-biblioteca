@@ -52,7 +52,7 @@ public class PessoaDAO {
         return pessoa;
     }
 
-    public List<Pessoa> buscar(String text) {
+    public List<Pessoa> search(String text) {
         session = HibernateUtil.getSessionFactory().openSession();
         List<Pessoa> list = (List<Pessoa>) session.createCriteria(Pessoa.class)
                             .add(Restrictions.ilike("nome", "%"+ text +"%"))
