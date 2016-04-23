@@ -1,73 +1,135 @@
 package beans;
 
+import beans.dao.EmprestimoDAO;
+import model.Emprestimo;
+
 import javax.faces.bean.ManagedBean;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 import java.util.Date;
 
 @ManagedBean
 public class EmprestimoBean {
-    private String dataRetirada;
-    private String dataDevolucao;
-    private String numeroPessoa;
-    private String tipo; //Livro ou Periodico
-    private String numeroItem;
+    private Emprestimo dados;
+    private EmprestimoDAO dao;
+
+    private String numPessoaBusca;
+    private String numItemBusca;
+    private String numEmprestimo;
+    private String tipoBusca;
+    private String buscarMessage;
+    private String cadastrarMessage;
+    private DataModel listaObj;
 
     public EmprestimoBean() {
-        this.setDataRetirada(String.valueOf(new Date()));
+        dados = new Emprestimo();
+        dao = new EmprestimoDAO();
     }
 
     public String cadastrar() {
-        return "emprestimo";
+        System.out.println("CADASTRAR");
+        if (dados.getId() <= 0) {
+            cadastrarMessage = "Emprestimo Cadastrado com SUCESSO, ID:";
+            dados.setDataRetirada(String.valueOf(new Date()));
+            return dao.insert(dados) ? "emprestimo" : "erro";
+        } else {
+            cadastrarMessage = "Emprestimo Atualizado com SUCESSO, ID:";
+            return dao.update(dados) ? "emprestimo" : "erro";
+        }
     }
 
     public String buscar() {
-        return "emprestimo";
+        System.out.println("BUSCAR");
+        try {
+            int n = Integer.parseInt(numEmprestimo);
+            dados = dao.show(n);
+
+            if(dados != null)
+                return "emprestimo";
+            else
+                buscarMessage = "Nenhum emprestimo encontrado com id: " + n;
+
+        } catch (Exception e) {
+            int numPessoa = 0;
+            int numItem = 0;
+
+            try {
+                if (!numPessoaBusca.isEmpty())
+                    numPessoa = Integer.parseInt(numPessoaBusca);
+
+                if (!numItemBusca.isEmpty())
+                    numItem = Integer.parseInt(numItemBusca);
+            } catch (Exception e) {}
+            finally {
+                listaObj = new ListDataModel<>(dao.search(tipoBusca, numPessoa, numItem));
+                if (listaObj.getRowCount() < 1)
+                    buscarMessage = "Nenhum emprestimo encontrado com tipo: " + tipoBusca
+                            +" com número Pessoa e número Item informados";
+            }
+        }
+
+        System.out.println("BUSCAR NULL");
+        return null; //permanece na mesma pagina
     }
 
     public String devolver() {
-        this.setDataDevolucao(String.valueOf(new Date()));
-        return "emprestimo";
+        System.out.println("DEVOLVER");
+        dados.setDataDevolucao(String.valueOf(new Date()));
+        cadastrarMessage = "Emprestimo Devolvido com SUCESSO, ID:";
+        return dao.update(dados) ? "emprestimo" : "erro";
     }
 
     // GETTERS AND SETTERS //
 
-    public String getNumeroPessoa() {
-        return numeroPessoa;
+    public Emprestimo getDados() {
+        return dados;
     }
 
-    public void setNumeroPessoa(String numeroPessoa) {
-        this.numeroPessoa = numeroPessoa;
+    public void setDados(Emprestimo dados) {
+        this.dados = dados;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getNumPessoaBusca() {
+        return numPessoaBusca;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setNumPessoaBusca(String numPessoaBusca) {
+        this.numPessoaBusca = numPessoaBusca;
     }
 
-    public String getNumeroItem() {
-        return numeroItem;
+    public String getNumItemBusca() {
+        return numItemBusca;
     }
 
-    public void setNumeroItem(String numeroItem) {
-        this.numeroItem = numeroItem;
+    public void setNumItemBusca(String numItemBusca) {
+        this.numItemBusca = numItemBusca;
     }
 
-    public String getDataRetirada() {
-        return dataRetirada;
+    public String getNumEmprestimo() {
+        return numEmprestimo;
     }
 
-    public void setDataRetirada(String dataRetirada) {
-        this.dataRetirada = dataRetirada;
+    public void setNumEmprestimo(String numEmprestimo) {
+        this.numEmprestimo = numEmprestimo;
     }
 
-    public String getDataDevolucao() {
-        return dataDevolucao;
+    public String getTipoBusca() {
+        return tipoBusca;
     }
 
-    public void setDataDevolucao(String dataDevolucao) {
-        this.dataDevolucao = dataDevolucao;
+    public void setTipoBusca(String tipoBusca) {
+        this.tipoBusca = tipoBusca;
     }
 
+    public String getBuscarMessage() {
+        return buscarMessage;
+    }
+
+    public String getCadastrarMessage() {
+        return cadastrarMessage;
+    }
+
+    public DataModel getlistaObj() {
+        return listaObj;
+    }
 }

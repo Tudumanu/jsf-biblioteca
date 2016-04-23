@@ -14,21 +14,66 @@
         <h:outputLink value="index.jsf">Voltar ao Início</h:outputLink>
 
         <h1>Buscar Empréstimo</h1>
+        <p>Deixe campos em branco <strong>para listar todos do tipo</strong></p>
 
         <h:form>
             <h:outputLabel value="Número da Pessoa:" />
-            <h:inputText value="#{emprestimoBean.numeroPessoa}" required="true" id="numeroPessoa" />
-            <label class="error"><h:message for="numeroPessoa" /></label>
+            <h:inputText value="#{emprestimoBean.numPessoaBusca}" />
             <br /><br />
 
             <h:outputLabel value="Número do Item:" />
-            <h:inputText value="#{emprestimoBean.numeroItem}" id="numeroItem" />
-            <label class="error"><h:message for="numeroItem" /></label>
+            <h:inputText value="#{emprestimoBean.numItemBusca}" />
             <br /><br />
 
-            <h:commandButton value="Buscar" action="#{emprestimoBean.buscar}"/>
+            <h:outputLabel value="Tipo:" />
+            <h:selectOneMenu id="tipo" value="#{emprestimoBean.tipoBusca}" required="true">
+                <f:selectItem itemLabel="Livro" itemValue="livro" />
+                <f:selectItem itemLabel="Periodico" itemValue="periodico" />
+            </h:selectOneMenu>
 
+            <h:commandButton value="Buscar" action="#{emprestimoBean.buscar}"/>
         </h:form>
+
+        <p>#{itemBean.buscarMessage}</p>
+
+        <h:dataTable rendered="#{not empty emprestimoBean.listaObj}" value="#{emprestimoBean.listaObj}" var="lista">
+            <h:column>
+                <f:facet name="header">
+                    ID
+                </f:facet>
+                <h:outputText value="#{lista.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    NUM PESSOA
+                </f:facet>
+                <h:outputText value="#{lista.numeroPessoa}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    NUM ITEM
+                </f:facet>
+                <h:outputText value="#{lista.numeroItem}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    TIPO
+                </f:facet>
+                <h:outputText value="#{lista.tipo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    DATA RETIRADA
+                </f:facet>
+                <h:outputText value="#{lista.dataRetirada}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    DATA DEVOLUCAO
+                </f:facet>
+                <h:outputText value="#{lista.dataDevolucao}"/>
+            </h:column>
+        </h:dataTable>
 
     </h:body>
 

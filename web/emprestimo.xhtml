@@ -17,32 +17,34 @@
 
         <h:form>
             <h:outputLabel value="Número da pessoa:" />
-            <h:inputText value="#{emprestimoBean.numeroPessoa}" required="true" id="numeroPessoa" />
+            <h:inputText value="#{emprestimoBean.dados.numeroPessoa}" required="true" id="numeroPessoa" />
             <label class="error"><h:message for="numeroPessoa" /></label>
             <br /><br />
 
             <h:outputLabel value="Número do Item:" />
-            <h:inputText value="#{emprestimoBean.numeroItem}" required="true" id="numeroItem" />
+            <h:inputText value="#{emprestimoBean.dados.numeroItem}" required="true" id="numeroItem" />
             <label class="error"><h:message for="numeroItem" /></label>
             <br /><br />
 
             <h:outputLabel value="Tipo:" />
-            <h:selectOneRadio value="#{emprestimoBean.tipo}" id="tipo" required="true">
+            <h:selectOneRadio value="#{emprestimoBean.dados.tipo}" id="tipo" required="true">
                 <f:selectItem itemLabel="Livro" itemValue="livro" />
                 <f:selectItem itemLabel="Periódico" itemValue="periodico" />
             </h:selectOneRadio>
             <label class="error"><h:message for="tipo" /></label>
             <br /><br />
 
-            <h:inputHidden value="#{emprestimoBean.dataRetirada}" />
+            <h:inputHidden value="#{emprestimoBean.dados.id}" />
 
-            <h:commandButton value="Cadastrar" action="#{emprestimoBean.cadastrar}" />
-
-            <h:commandButton value="Marcar Empréstimo como devolvido" action="#{emprestimoBean.devolver}" />
-
+            <h:commandButton value="#{emprestimoBean.dados.id > 1 ? 'Atualizar' : 'Cadastrar'}" action="#{emprestimoBean.cadastrar}" />
         </h:form>
 
-        <p>Os dados enviados foram: #{emprestimoBean.numeroPessoa} #{emprestimoBean.numeroItem} #{emprestimoBean.tipo} #{emprestimoBean.dataRetirada} #{emprestimoBean.dataDevolucao}</p>
+        <h:form rendered="#{emprestimoBean.dados.id > 0 ? true : false}">
+            <h:inputHidden value="#{emprestimoBean.dados.id}" />
+            <h:commandButton value="Marcar Empréstimo como devolvido" action="#{emprestimoBean.devolver}" />
+        </h:form>
+
+        <p>#{emprestimoBean.cadastrarMessage} <h:outputLabel rendered="#{not empty emprestimoBean.cadastrarMessage}" value="#{emprestimoBean.dados.id}"/></p>
 
     </h:body>
 

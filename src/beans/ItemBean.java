@@ -32,10 +32,10 @@ public class ItemBean {
     public String cadastrar() {
         System.out.println("CADASTRAR");
         if (dados.getId() <= 0) {
-            cadastrarMessage = "Livro Cadastrada com SUCESSO, ID:";
+            cadastrarMessage = "Livro Cadastrado com SUCESSO, ID:";
             return dao.insert(dados) ? "livro" : "erro";
         } else {
-            cadastrarMessage = "Livro Atualizada com SUCESSO, ID:";
+            cadastrarMessage = "Livro Atualizado com SUCESSO, ID:";
             return dao.update(dados) ? "livro" : "erro";
         }
     }
@@ -43,10 +43,10 @@ public class ItemBean {
     public String cadastrarPeriodico() {
         System.out.println("CADASTRAR");
         if (periodicoDados.getId() <= 0) {
-            cadastrarMessage = "Periodico Cadastrada com SUCESSO, ID:";
+            cadastrarMessage = "Periodico Cadastrado com SUCESSO, ID:";
             return periodicoDao.insert(periodicoDados) ? "periodico" : "erro";
         } else {
-            cadastrarMessage = "Periodico Atualizada com SUCESSO, ID:";
+            cadastrarMessage = "Periodico Atualizado com SUCESSO, ID:";
             return periodicoDao.update(periodicoDados) ? "periodico" : "erro";
         }
     }
