@@ -77,7 +77,7 @@ public class PessoaBean {
         return buscarMessage;
     }
 
-    public DataModel getlistaObj() {
+    public DataModel getListaObj() {
         return listaObj;
     }
 

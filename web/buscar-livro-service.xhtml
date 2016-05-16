@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title><h:outputText value="#{indexBean.title}" /></title>
+    </h:head>
+
+    <h:body>
+        <h:outputLink value="index.jsf">Voltar ao Início</h:outputLink>
+
+        <h1>Buscar Livro via serviço</h1>
+        <h4>Digite o ID do livro para ir a tela de edição</h4>
+        <p>Use <strong>% para listar todos</strong></p>
+
+        <h:form>
+            <h:outputLabel value="Título, Autor Principal ou ID:" />
+            <h:inputText value="#{livroServiceBean.stringBusca}" required="true" id="busca" />
+            <label class="error"><h:message for="busca" /></label>
+            <br /><br />
+
+            <h:commandButton value="Buscar" action="#{livroServiceBean.buscar}"/>
+        </h:form>
+
+        <p>#{livroServiceBean.buscarMessage}</p>
+
+        <h:dataTable value="#{livroServiceBean.listaObj}" var="lista">
+            <h:column>
+                <f:facet name="header">
+                    ID
+                </f:facet>
+                <h:outputText value="#{lista.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    TITULO
+                </f:facet>
+                <h:outputText value="#{lista.titulo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    EDITORA
+                </f:facet>
+                <h:outputText value="#{lista.editora}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    AUTOR PRINCIPAL
+                </f:facet>
+                <h:outputText value="#{lista.autorPrincipal}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    ANO
+                </f:facet>
+                <h:outputText value="#{lista.ano}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    ISBN
+                </f:facet>
+                <h:outputText value="#{lista.isbn}"/>
+            </h:column>
+        </h:dataTable>
+
+    </h:body>
+
+</f:view>
+</html>

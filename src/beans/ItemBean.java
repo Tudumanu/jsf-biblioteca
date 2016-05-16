@@ -124,7 +124,7 @@ public class ItemBean {
         return buscarMessage;
     }
 
-    public DataModel getlistaObj() {
+    public DataModel getListaObj() {
         return listaObj;
     }
 

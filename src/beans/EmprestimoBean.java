@@ -125,7 +125,7 @@ public class EmprestimoBean {
         return cadastrarMessage;
     }
 
-    public DataModel getlistaObj() {
+    public DataModel getListaObj() {
         return listaObj;
     }
 }
