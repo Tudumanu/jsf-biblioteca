@@ -9,3 +9,5 @@ Libs adicionadas manualmente:
  
 * JDBC-Driver
  * postgresql-9.4-1201.jdbc4
+
+Criação de classes a partir de serviço WSDL (Generate Java code from WSDL) -> O Pacote webservices foi gerado a partir do WSDL do serviço Web https://github.com/Tudumanu/ws-biblioteca
