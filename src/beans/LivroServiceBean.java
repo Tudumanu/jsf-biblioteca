@@ -1,6 +1,8 @@
 package beans;
 
 import model.Livro;
+import webservices.BuscaLivro;
+import webservices.BuscaLivroService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.model.DataModel;
@@ -8,28 +10,46 @@ import javax.faces.model.ListDataModel;
 
 @ManagedBean
 public class LivroServiceBean {
-    private Livro dados;
-
     private String stringBusca;
     private String buscarMessage;
     private DataModel listaObj;
 
     public LivroServiceBean() {
-        dados = new Livro();
     }
 
     public String buscar() {
+        BuscaLivroService service;
+        BuscaLivro port;
+
+        try {
+            service = new BuscaLivroService();
+            port = service.getBuscaLivroPort();
+        } catch (Exception e) {
+            buscarMessage = "Ocorreu um erro ao consultar o serviço, contate o administrador";
+            return null;
+        }
+
         try {
             int n = Integer.parseInt(stringBusca);
 
-            //dados = dao.show(n); //usar service
-            if(dados != null)
-                return "livro";
-            else
+            //usando service
+            webservices.Livro dadosTmp = port.obter(n);
+
+            if(dadosTmp != null) {
+                buscarMessage = "Foi encontrado o livro no webService: " +
+                        dadosTmp.getId() + " " +
+                        dadosTmp.getTitulo() + " " +
+                        dadosTmp.getAutorPrincipal() + " " +
+                        dadosTmp.getAno() + " " +
+                        dadosTmp.getEditora() + " " +
+                        dadosTmp.getIsbn() + " "
+                ;
+            } else
                 buscarMessage = "Nenhuma livro encontrado com id: " + n;
 
         } catch (Exception e) {
-            //listaObj = new ListDataModel<>(dao.search(stringBusca)); //usar service
+            //usando o service
+            listaObj = new ListDataModel<>(port.buscar(stringBusca));
 
             if (listaObj == null || listaObj.getRowCount() < 1)
                 buscarMessage = "Nenhuma livro encontrado com titulo ou autorPrincipal: " + stringBusca;
